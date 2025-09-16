@@ -1,4 +1,12 @@
 function solution(arr)
 {
-    return arr.filter((num, index) => num !== arr[index-1]);
+    let stack = [];
+    
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] !== arr[i+1]) {
+            stack.push(arr[i]);
+        }
+    }
+    
+    return stack;
 }
