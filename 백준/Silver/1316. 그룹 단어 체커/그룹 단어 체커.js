@@ -1,24 +1,28 @@
 const fs = require('fs');
 const input = fs.readFileSync(0).toString().trim().split('\n');
 
-const n = Number(input[0]);
-let cnt = 0;
+let n = Number(input[0]);
+let cnt = 0; // 그룹 단어 개수 세기
 
-for(let i = 1; i <=n; i++) {
-    const word = input[i];
-    let used = []; // 나온 글자
+for(let i = 1; i <= n; i++) {
+    let word = input[i]; // 검사할 단어
+    let used = []; // 사용
     let result = true;
     
-    for(let j = 0; j < word.length; j++) {
-        const ch = word[j];
+    for(let j = 0; j < word.length; j++) { // 왼쪽부터 검사
+        let ch = word[j]; // 글자
         
-        if(j > 0 && ch !== word[j - 1] && used.includes(ch)) { // 이전 글자와 다르고, 이미 등장한 적 있으면 실패
+        // 첫 글자 비교대상 x
+        // 연속된 글자 -> 새로 시작
+        // 사용된 글자
+        if(j > 0 && ch !== word[j - 1] && used.includes(ch)) {
             result = false;
             break;
         }
         
         if(!used.includes(ch)) used.push(ch);
     }
+    
     if(result) cnt++;
 }
 
