@@ -13,7 +13,7 @@ for(let i = 2; i < 2 + m; i++) {
     graph[b].push(a);
 }
 
-const visited = Array(n + 1).fill(false); // 카운트
+const visited = Array(n + 1).fill(false); // 방문
 let count = 0; // 개수
 
 // bfs - 1번 컴퓨터에서 시작
