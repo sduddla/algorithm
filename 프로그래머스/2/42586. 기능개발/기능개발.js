@@ -14,18 +14,16 @@ function solution(progresses, speeds) {
     // 배포
     let result = [];
     let count = 1;
-    
     for(let i = 1; i < days.length; i++) {
-        if(days[i] <= days[0]) {
-            count++;
-        } else {
-            result.push(count);
-            days[0] = days[i];
-            count = 1;
+        if(days[i] <= days[0]) { // 현재 기능이 기준 기능보다 늦게 끝나지 않으면(같이 배포 가능)
+            count++; // 카운트
+        } else { // 현재 기능이 기준 기능보다 늦게 끝날 경우
+            result.push(count); // 지금까지 모은 기능 배포
+            days[0] = days[i]; // 기준일 업데이트
+            count = 1; // 새 배포 시작
         }
     }
     
-    result.push(count);
+    result.push(count); // 마지막 배포
     return result;
-
 }
