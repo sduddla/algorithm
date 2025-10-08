@@ -3,13 +3,13 @@ function solution(board) {
     // o와 x 동시에 승리 불가
     // o 승리 -> x 보다 1개 많아야함
     // x 승리 -> o와 개수가 같아야 함
-    
+  
     // o 개수
     let oCount = 0;
-    
+  
     // x 개수
     let xCount = 0;
-    
+  
     // 개수 카운트
     for(let row of board) {
         for(let item of row) {
@@ -17,8 +17,8 @@ function solution(board) {
             if(item === 'X') xCount++;
         }
     }
-    
-    // o는 x보다 1개 많거나 같아야 한다 -> x가 크거나 2개 이상 차이 나면 불가능
+  
+    // o는 x보다 1개 많거나 같아야 한다 -> x가 크거나 2개 이상 차이 나면 잘못된 게임
     if(xCount > oCount || oCount - xCount > 1) return 0;
     
     const win = (ch) => {
@@ -42,13 +42,13 @@ function solution(board) {
     const oWin = win('O');
     const xWin = win('X');
     
-    // o와 x 동시에 승리 불가능
+    // o와 x가 동시에 이길 수 없음
     if(oWin && xWin) return 0;
     
-    // o가 이겼다면, x의 개수보다 1개 더 많아야 한다.
+    // o가 이긴 경우, x의 개수보다 1개 더 많아야 한다.
     if(oWin && oCount < xCount + 1) return 0;
         
-    // x가 이겼다면, o와 개수가 같아야 한다. -> 같지 않으면 불가능
+    // x가 이긴 경우, o와 X의 개수가 같아야 한다.
     if(xWin && xCount !== oCount) return 0;
     
     return 1;
