@@ -1,4 +1,5 @@
-// 좌표평면 체크
+
+// 좌표평면
 function isMove(nx, ny) {
     return nx >= -5 && nx <= 5 && ny >= -5 && ny <= 5;
 }
@@ -21,11 +22,12 @@ function solution(dirs) {
     let x = 0;
     let y = 0;
     
+    // 겹치는 좌표 1개로 처리
     const visited = new Set();
     
     for(const dir of dirs) {
         const [nx, ny] = location(x, y, dir);
-        if(!isMove(nx, ny)) {
+        if(!isMove(nx, ny)) { // 벗어난 좌표는 인정하지 않음
             continue;
         }
         
@@ -36,5 +38,4 @@ function solution(dirs) {
     }
     
     return visited.size / 2;
-    
 }
