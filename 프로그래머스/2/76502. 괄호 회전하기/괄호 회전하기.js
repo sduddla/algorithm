@@ -1,25 +1,26 @@
 function solution(s) {
+    // 스택 사용
+    // s 소괄호로 이루어진 문자열
     
-    let answer = 0;
-    let n = s.length;
+    const n = s.length;
+    let result = 0;
     
-    for(let i = 0; i < n; i++) {
-        const stack = [];
+    for(let i = 0; i < s.length; i++) {
+        let stack = []; // 스택 만들기
         
-        let isCollect = true;
+        let isCorrect = true;
+        
         for(let j = 0; j < n; j++) {
-            const c = s[(i + j) % n];
+            const c = s[(i + j) % n]; // 회전
             
-            // 열린 괄호 push
-            if(c === '[' || c === '(' || c === '{') {
-                stack.push(c);
+            if(c === '[' || c === '(' || c === '{') { // 열린 괄호라면
+                stack.push(c); // 스택에 넣기
             } else {
-                if(stack.length === 0) {
-                    // 여는 괄호가 없을 경우
-                    isCollect = false;
+                if(stack.length === 0) { // 열린 괄호가 없다면
+                    isCorrect = false;
                     break;
                 }
-                // 닫힌 괄호 스택의 top과 짝이 맞는 비교
+                
                 const top = stack[stack.length - 1];
                 if(c === ']' && top === '[') {
                     stack.pop();
@@ -28,16 +29,17 @@ function solution(s) {
                 } else if(c === '}' && top === '{') {
                     stack.pop();
                 } else {
-                    isCollect = false;
+                    isCorrect = false;
                     break;
-                }
+                } 
             }
         }
         
-        if(isCollect && stack.length === 0) {
-            answer += 1;
+        // 모든 괄호의 짝 맞을 경우
+        if(stack.length === 0 && isCorrect) {
+            result += 1;
         }
     }
     
-    return answer;
+    return result;
 }
