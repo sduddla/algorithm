@@ -1,13 +1,13 @@
 function solution(s) {
-    const arr = s.split(' ');
-    let answer = 0;
+    s = s.split(' ');
+    let result = 0;
     
-    arr.forEach((v, i) => {
-        if(v === 'Z') {
-            answer -= Number(arr[i-1]);
+    for(let i = 0; i < s.length; i++) {
+        if(s[i] === 'Z') {
+            result -= Number(s[i - 1]);
         } else {
-            answer += Number(v);
+            result += Number(s[i]);
         }
-    })
-    return answer;
+    }
+    return result;
 }
