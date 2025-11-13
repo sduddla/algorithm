@@ -1,36 +1,42 @@
 function solution(dartResult) {
-  let dartResultArr = dartResult.split('');
-  let scores = [];
-  let num = '';
-
-  for (let i = 0; i < dartResultArr.length; i++) {
-    let ch = dartResultArr[i];
-
-    if (!isNaN(ch)) { // 숫자면 이어 붙이기 (10 처리용)
-      num += ch;
-    }
-    else if (ch === 'S' || ch === 'D' || ch === 'T') {
-      let score = parseInt(num);
-      num = '';
-
-      // 보너스 처리
-      if (ch === 'S') score = Math.pow(score, 1);
-      if (ch === 'D') score = Math.pow(score, 2);
-      if (ch === 'T') score = Math.pow(score, 3);
-
-      scores.push(score);
-    }
-    else if (ch === '*' || ch === '#') {
-      if (ch === '*') {
-        scores[scores.length - 1] *= 2; // 현재 점수 2배
-        if (scores.length > 1) {        // 이전 점수도 있으면
-          scores[scores.length - 2] *= 2;
+    // S 1제곱
+    // D 2제곱
+    // T 3제곱
+    // * 해당 점수와 바로 전에 얻은 점수 2배로
+    // # 해당 점수 마이너스
+    
+    let dartResultArr = dartResult.split('');
+    let answer = [];
+    let num = '';
+    
+    for(let i = 0; i < dartResultArr.length; i++) {
+        let ch = dartResultArr[i];
+        
+        if(!isNaN(ch)) { // 숫자면 이어 붙이기, 10
+            num += ch;
+        } else if (ch === 'S' || ch === 'D' || ch === 'T') {
+            let score = parseInt(num);
+            num = '';
+            
+            if(ch === 'S') score = Math.pow(score, 1);
+            if(ch === 'D') score = Math.pow(score, 2);
+            if(ch === 'T') score = Math.pow(score, 3);
+            
+            answer.push(score);
+        } else if (ch === '*' || ch === '#') {
+            if (ch === '*') {
+                // 해당 점수 2배
+                answer[answer.length - 1] *= 2;
+                
+                // 이전 점수 2배
+                if(answer.length > 1) {
+                    answer[answer.length - 2] *= 2;
+                }
+            } else if (ch === '#') {
+                // 해당 점수 마이너스
+                answer[answer.length - 1] *= -1;
+            }
         }
-      } else if (ch === '#') {
-        scores[scores.length - 1] *= -1; // 현재 점수 음수
-      }
     }
-  }
-
-  return scores.reduce((a, b) => a + b);
+    return answer.reduce((a, b) => a + b);
 }
