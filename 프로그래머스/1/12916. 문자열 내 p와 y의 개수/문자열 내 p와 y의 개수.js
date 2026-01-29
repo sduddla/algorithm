@@ -11,10 +11,5 @@ function solution(s){
             yCnt++;
         }
     }
-    
-    if(pCnt === yCnt) {
-        return true;
-    } else {
-        return false;
-    }
+    return pCnt === yCnt;
 }
