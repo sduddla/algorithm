@@ -1,0 +1,36 @@
+// Run by Node.js
+const readline = require('readline');
+
+(async () => {
+	let rl = readline.createInterface({ input: process.stdin });
+	const input = [];
+	
+	for await (const line of rl) {
+		input.push(line);
+	}
+	
+	const S = input[1];
+	const E = input[2];
+
+	const sLen = S.length;
+	const stack = [];
+
+	for (const ch of E) {
+		stack.push(ch);
+
+		if (stack.length >= sLen) {
+			let ok = true;
+			for(let i = 0; i < sLen; i++) {
+				if (stack[stack.length - sLen + i] !== S[i]) {
+					ok = false;
+					break;
+				}
+			}
+			if (ok) {
+				for (let i = 0; i < sLen; i++) stack.pop();
+			}
+		}
+	}
+	const result = stack.join('');
+	console.log(result.length === 0 ? 'EMPTY' : result);
+})();
