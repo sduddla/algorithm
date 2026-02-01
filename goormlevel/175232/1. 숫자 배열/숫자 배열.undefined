@@ -1,0 +1,24 @@
+// Run by Node.js
+const readline = require('readline');
+
+(async () => {
+	let rl = readline.createInterface({ input: process.stdin });
+	const input = [];
+	
+	for await (const line of rl) {
+		input.push(line);
+	}
+
+	const N = Number(input[0]);
+	let num = 1;
+	
+	for(let i = 0; i < N; i++) {
+		let row = [];
+
+		for(let j = 0; j < N; j++) {
+			row.push(num);
+			num++;
+		}
+		console.log(row.join(' '));
+	}
+})();
