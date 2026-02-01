@@ -1,0 +1,24 @@
+// Run by Node.js
+const readline = require('readline');
+
+(async () => {
+	let rl = readline.createInterface({ input: process.stdin });
+	let input = [];
+	
+	for await (const line of rl) {
+		input.push(line);
+	}
+
+	const [n, k] = input[0].split(' ').map(Number);
+	const arr = input[1].split(' ');
+
+	let count = 0;
+
+	for(let i = 0; i < arr.length; i++) {
+		if (!arr[i].includes(k)) {
+			count++;
+		}
+	}
+	console.log(count);
+	process.exit();
+})();
