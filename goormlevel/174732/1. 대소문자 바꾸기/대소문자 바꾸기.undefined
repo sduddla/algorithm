@@ -1,0 +1,25 @@
+// Run by Node.js
+const readline = require('readline');
+
+(async () => {
+	let rl = readline.createInterface({ input: process.stdin });
+	const input = [];
+	
+	for await (const line of rl) {
+		input.push(line);
+		rl.close();
+	}
+
+	const str = input[1];
+	let result = '';
+
+	for(let i = 0; i < str.length; i++) {
+		if (str[i] >= 'a' && str[i] <= 'z') {
+			result += str[i].toUpperCase();
+		} else if (str[i] >= 'A' && str[i] <= 'Z') {
+			result += str[i].toLowerCase();
+		}
+	}
+	console.log(result);
+	process.exit();
+})();
