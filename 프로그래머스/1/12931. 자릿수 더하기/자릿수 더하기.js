@@ -1,9 +1,9 @@
 function solution(n)
 {
-    let result = 0;
-    const str = String(n);
-    for(let i=0; i<str.length; i++) {
-        result += Number(str[i]);
+    let sum = 0;
+    let nStr = String(n);
+    for(let i = 0; i < nStr.length; i++) {
+        sum += Number(nStr[i]);
     }
-    return result;
+    return sum;
 }
