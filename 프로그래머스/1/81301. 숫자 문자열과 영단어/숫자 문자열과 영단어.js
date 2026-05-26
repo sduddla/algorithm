@@ -12,21 +12,20 @@ function solution(s) {
         nine: '9',
     }
     
-    let result = ''; // 결과
-    let save = ''; // 영단어
+    let result = '';
+    let num = '';
     
     for(let i = 0; i < s.length; i++) {
         let ch = s[i];
-        
-        if(ch >= 0 && ch <= 9) { // 숫자면 result에 넣기
+        if (ch >= 0 && ch <= 9) {
             result += ch;
         } else {
-            save += ch;
+            num += ch;
         }
         
-        if(map[save] !== undefined) {
-            result += map[save];
-            save = ''; // 초기화
+        if(map[num] !== undefined) {
+            result += map[num];
+            num = '';
         }
     }
     return Number(result);
