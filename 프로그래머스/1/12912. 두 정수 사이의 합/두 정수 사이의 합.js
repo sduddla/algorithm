@@ -1,11 +1,12 @@
 function solution(a, b) {
     let sum = 0;
     
-    const start = Math.min(a, b);
-    const end = Math.max(a, b);
+    let minNum = Math.min(a, b);
+    let maxNum = Math.max(a, b);
     
-    for(let i = start; i <= end; i++) {
+    for(let i = minNum; i <= maxNum; i++) {
         sum += i;
     }
+    
     return sum;
 }
