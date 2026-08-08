@@ -1,15 +1,6 @@
 function solution(s){
-    s = s.toLowerCase();
-    
-    let pCount = 0;
-    let yCount = 0;
-    
-    for(let i = 0; i < s.length; i++) {
-        if(s[i] === 'p') {
-            pCount++;
-        } else if(s[i] === 'y') {
-            yCount++;
-        }
-    }
-    return pCount === yCount;
+    const arr = s.toLowerCase().split('');
+    const p = arr.filter(c => c === 'p').length;
+    const y = arr.filter(c => c === 'y').length;
+    return p === y;
 }
