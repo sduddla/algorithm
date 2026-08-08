@@ -1,6 +1,6 @@
 function solution(n) {
-    let sqrt = Math.sqrt(n);
+    let a = Math.sqrt(n);
     
-    if (sqrt % 1 === 0) return (sqrt + 1) * (sqrt + 1);
+    if (Number.isInteger(a)) return (a + 1) * (a + 1);
     else return -1;
 }
