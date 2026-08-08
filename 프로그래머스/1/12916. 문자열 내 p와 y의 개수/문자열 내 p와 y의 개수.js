@@ -1,15 +1,15 @@
 function solution(s){
     s = s.toLowerCase();
     
-    let pCnt = 0;
-    let yCnt = 0;
+    let pCount = 0;
+    let yCount = 0;
     
     for(let i = 0; i < s.length; i++) {
         if(s[i] === 'p') {
-            pCnt++;
+            pCount++;
         } else if(s[i] === 'y') {
-            yCnt++;
+            yCount++;
         }
     }
-    return pCnt === yCnt;
+    return pCount === yCount;
 }
